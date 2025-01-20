@@ -12,5 +12,17 @@ export const colors = {
     DEFAULT: 'var(--text-primary)',
     primary: 'var(--text-primary)',
     secondary: 'var(--text-secondary)',
+    white: 'var(--text-white)',
+  },
+
+  buttonColor: {
+    primary: {
+      DEFAULT: 'var(--button-primary)',
+      hover: 'var(--button-primary-hover)',
+    },
+    secondary: {
+      DEFAULT: 'var(--button-secondary)',
+      hover: 'var(--button-secondary-hover)',
+    },
   },
 };

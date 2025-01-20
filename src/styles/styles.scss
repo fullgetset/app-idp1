@@ -24,9 +24,15 @@
     /* Colors start */
     --primary: rgba(62, 134, 250, 1); /* #3e86fa */
     --secondary: rgba(247, 254, 255, 1); /* #f7feff */
-    --third: rgba(107, 183, 123, 1); /* #253858 */
+    --third: rgba(37, 56, 88, 1); /* #253858 */
     --white: rgba(255, 255, 255, 1); /* #FFFFFF */
     --black: rgba(0, 0, 0, 1); /* #000000 */
+
+    /* Buttons */
+    --button-primary: var(--primary);
+    --button-primary-hover: rgb(20, 101, 231); /* #2c78f3 */
+    --button-secondary: var(--third);
+    --button-secondary-hover: rgb(17, 30, 53); /* #253858 */
 
     /* background */
     --background-primary: var(--primary);
@@ -34,7 +40,7 @@
     --background-third: var(--third);
 
     /* text */
-    --text-primary: rgba(37, 56, 88, 1); /* #253858 */
+    --text-primary: var(--third);
     --text-white: var(--white);
     /* Colors end */
 
@@ -46,5 +52,14 @@
 
   html {
     font-size: calc(var(--font-size-base) * 1px);
+  }
+
+  button {
+    transition-property: background-color;
+    transition-duration: 300ms;
+  }
+
+  * {
+    color: var(--text-primary);
   }
 }
