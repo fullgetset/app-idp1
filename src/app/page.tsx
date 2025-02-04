@@ -6,6 +6,7 @@ export default function Home() {
     <div className=''>
       <Link href={'/login'}>
         <Button>login</Button>
+        s
       </Link>
     </div>
   );
