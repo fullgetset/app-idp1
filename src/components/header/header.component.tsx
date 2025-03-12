@@ -7,8 +7,8 @@ const Header = () => {
       <Image
         src={Logo}
         alt='logo image'
-        width={90}
-        height={90}
+        width={65}
+        height={65}
         className='rounded-circle'
       />
     </header>
