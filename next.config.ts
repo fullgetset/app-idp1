@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/media/catalog/product/cache/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'rust.litnet.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

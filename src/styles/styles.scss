@@ -1,65 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// libs
+@use "node_modules/modern-normalize/modern-normalize.css";
 
-@layer base {
-  :root {
-    /* Typography */
-    --font-size-base: 16; /* fonts size html base 16px/1rem */
-    --h1-font-size: 3rem; /* 48px */
-    --h1-line-height: calc(56 / 48); /* 56px */
-    --h2-font-size: 2rem; /* 32px */
-    --h2-line-height: calc(42 / 32); /* 42px */
-    --h3-font-size: 1.5rem; /* 24px */
-    --h3-line-height: calc(32 / 24); /* 32px */
-    --body1-font-size: 1rem; /* 16px */
-    --body1-line-height: calc(20 / 16); /* 20px */
-    --body2-font-size: 0.875rem; /* 14px */
-    --body2-line-height: calc(18 / 14); /* 18px */
-    --caption1-font-size: 0.75rem; /* 12px */
-    --caption1-line-height: calc(16 / 12); /* 16px */
-    --caption2-font-size: 0.625rem; /* 10px */
-    --caption2-line-height: calc(14 / 10); /* 14px */
+// Base
+@use "base/mixins";
+@use "base/fonts";
+@use "base/root";
+@use "base/reboot";
 
-    /* Colors start */
-    --primary: rgba(62, 134, 250, 1); /* #3e86fa */
-    --secondary: rgba(247, 254, 255, 1); /* #f7feff */
-    --third: rgba(37, 56, 88, 1); /* #253858 */
-    --white: rgba(255, 255, 255, 1); /* #FFFFFF */
-    --black: rgba(0, 0, 0, 1); /* #000000 */
-
-    /* Buttons */
-    --button-primary: var(--primary);
-    --button-primary-hover: rgb(20, 101, 231); /* #2c78f3 */
-    --button-secondary: var(--third);
-    --button-secondary-hover: rgb(17, 30, 53); /* #253858 */
-
-    /* background */
-    --background-primary: var(--primary);
-    --background-secondary: var(--secondary);
-    --background-third: var(--third);
-
-    /* text */
-    --text-primary: var(--third);
-    --text-white: var(--white);
-    /* Colors end */
-
-    /* Border radius */
-    --border-radius-xs: 0.3125rem;
-    --border-radius-sm: 0.5rem;
-    --border-radius-md: 0.75rem;
-  }
-
-  html {
-    font-size: calc(var(--font-size-base) * 1px);
-  }
-
-  button {
-    transition-property: background-color;
-    transition-duration: 300ms;
-  }
-
-  * {
-    color: var(--text-primary);
-  }
-}
+// Blocks
+@use "blocks/container";
+@use "blocks/header";
+@use "blocks/footer";

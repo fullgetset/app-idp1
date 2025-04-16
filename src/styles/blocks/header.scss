@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  background-color: var(--palette-background-default);
+  justify-content: center;
+  box-shadow: var(--shadows-2);
+
+  &__logo {
+    border-radius: 50%;
+  }
+}

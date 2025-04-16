@@ -1,0 +1,35 @@
+@import '../styles/base/mixins';
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__title {
+    font-size: var(--typography-fontSize-h2);
+    font-weight: 700;
+    text-align: center;
+
+    @include media-breakpoint-down(lg) {
+      font-size: var(--typography-fontSize-h3);
+    }
+  }
+
+  &__books {
+    display: grid;
+
+    @include media-breakpoint-down(lg) {
+      gap: 20px;
+    }
+
+    @include media-breakpoint-between(md, lg) {
+      font-size: var(--typography-fontSize-body3);
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+  }
+}

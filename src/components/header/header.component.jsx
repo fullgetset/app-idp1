@@ -3,13 +3,13 @@ import Logo from 'public/images/logo.jpg';
 
 const Header = () => {
   return (
-    <header className='bg-background-white flex justify-center'>
+    <header className='header'>
       <Image
         src={Logo}
         alt='logo image'
         width={65}
         height={65}
-        className='rounded-circle'
+        className='header__logo'
       />
     </header>
   );

@@ -1,0 +1,35 @@
+body,
+html {
+  height: 100%;
+  font-size: var(--typography-htmlFontSize);
+}
+
+b,
+strong {
+  font-weight: var(--typography-fontWeightBold);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--typography-fontFamily);
+  color: var(--palette-primary-text);
+  background-color: var(--palette-background-default);
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  cursor: pointer;
+}
