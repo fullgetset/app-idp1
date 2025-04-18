@@ -1,0 +1,25 @@
+.pagination {
+  &__list {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  &__item {
+    padding: 10px 15px;
+    background-color: var(--palette-background-default);
+    box-shadow: var(--shadows-4);
+    cursor: pointer;
+    transition: background-color .3s;
+    border-radius: var(--border-radius-secondary);
+
+    &:hover {
+      background-color: var(--palette-background-main);
+    }
+  }
+
+  &__link {
+    color: var(--palette-primary-text);
+    text-decoration: none;
+  }
+}

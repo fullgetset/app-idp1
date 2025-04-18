@@ -9,6 +9,13 @@ strong {
   font-weight: var(--typography-fontWeightBold);
 }
 
+ul,
+li {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
 h1,
 h2,
 h3,
@@ -32,4 +39,5 @@ body {
 
 button {
   cursor: pointer;
+  border: 0;
 }
