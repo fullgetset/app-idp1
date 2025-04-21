@@ -17,6 +17,7 @@
   }
 
   &__add {
+    font-size: var(--typography-fontSize-body2);
     color: var(--palette-secondary-text);
     background-color: var(--palette-background-secondary);
     padding: 15px;
@@ -25,5 +26,10 @@
     text-transform: uppercase;
     border-radius: var(--border-radius-third);
     white-space: nowrap;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: var(--palette-background-dark);
+    }
   }
 }

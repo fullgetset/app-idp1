@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 import './book-card.style.scss';
