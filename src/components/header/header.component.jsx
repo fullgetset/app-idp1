@@ -1,19 +1,23 @@
-"use client";
+'use client';
 
 import Image from 'next/image';
 import Logo from 'public/images/logo.jpg';
-import { useState } from 'react';
+
 import { modalService } from 'src/services';
+import { Modal } from '../modal';
+import { useState } from 'react';
 
 export function Header() {
-  const [counter, setCounter] = useState(0);
-  const handleModal = () => {
-    console.log('open modal');
+  const { openModal, resolve, reject } = modalService();
+  const [modalOpen, setModalOpen] = useState(false);
 
-    modalService
-      .openModal()
-      .then((result) => console.log(result))
-      .catch((err) => console.error(err));
+  const handleModal = () => {
+    setModalOpen(true);
+
+    openModal()
+      .then(() => setModalOpen(false))
+      .catch(() => setModalOpen(false))
+      .finally(() => setModalOpen(false));
   };
 
   return (
@@ -29,13 +33,16 @@ export function Header() {
       </picture>
 
       <button
-        onClick={() => setCounter(counter + 1)}
+        onClick={handleModal}
         className='header__add'>
         добавить книгу
       </button>
 
-      <button onClick={() => modalService.handleYes()}>{counter}</button>
-      <button onClick={() => modalService.handleNo()}>no</button>
+      <Modal isOpen={modalOpen}>
+        <div>123 div</div>
+        <button onClick={resolve}>yeas</button>
+        <button onClick={reject}>no</button>
+      </Modal>
     </header>
   );
 }
