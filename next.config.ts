@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
@@ -16,6 +16,17 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)', // Защита всех страниц
+        headers: [
+          { key: 'X-Frame-Options', value: 'DENY' }, // Запрещает загрузку в iframe
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" }, // Полный запрет встраивания
+        ],
+      },
+    ];
   },
 };
 

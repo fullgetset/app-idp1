@@ -1,23 +1,27 @@
-const modalService = () => {
-  let resolveModal;
-  let rejectModal;
+const modalService = (() => {
+  const modals = new Map();
 
   return {
-    openModal() {
+    openModal(id) {
       return new Promise((resolve, reject) => {
-        resolveModal = resolve;
-        rejectModal = reject;
+        modals.set(id, { resolve, reject });
       });
     },
 
-    resolve() {
-      if (resolveModal) resolveModal();
+    resolve(id) {
+      if (modals.has(id)) {
+        modals.get(id).resolve();
+        modals.delete(id);
+      }
     },
 
-    reject() {
-      if (rejectModal) rejectModal();
+    reject(id) {
+      if (modals.has(id)) {
+        modals.get(id).reject();
+        modals.delete(id);
+      }
     },
   };
-};
+})();
 
 export { modalService };

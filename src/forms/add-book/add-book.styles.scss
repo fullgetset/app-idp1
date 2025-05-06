@@ -1,0 +1,48 @@
+.add-book {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__field,
+  &__submit {
+    padding: 10px;
+    border-radius: var(--border-radius-secondary);
+    outline: 0;
+  }
+
+  &__field {
+    border: 1px solid var(--palette-text-disabled);
+    color: var(--palette-primary-text);
+    transition: box-shadow 0.3s;
+
+    &:focus,
+    &:hover {
+      box-shadow: var(--shadows-2);
+    }
+
+    &[type='number'] {
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+
+  &__submit {
+    padding: 10px;
+    border: 0;
+    color: var(--palette-secondary-text);
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:not(:hover) {
+      background-color: var(--palette-background-secondary);
+    }
+
+    &:hover {
+      background-color: var(--palette-background-dark);
+    }
+  }
+}

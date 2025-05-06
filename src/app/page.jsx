@@ -7,7 +7,7 @@ export default async function Home() {
 
   return (
     <div className='home-page mt-4'>
-      <Header />
+     
       <h2 className='home-page__title'>Книги</h2>
 
       <div className='home-page__books'>

@@ -1,4 +1,4 @@
-import { Footer } from '@components';
+import { Footer, Header } from '@components';
 
 import '../styles/styles.scss';
 
@@ -10,6 +10,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='flex flex-col min-h-[100vh]'>
+        <Header />
         <main className='container bg-backgroundColor-secondary flex-grow'>
           {children}
         </main>

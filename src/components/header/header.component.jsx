@@ -6,18 +6,54 @@ import Logo from 'public/images/logo.jpg';
 import { modalService } from 'src/services';
 import { Modal } from '../modal';
 import { useState } from 'react';
+import { FormAdd } from '@forms';
 
 export function Header() {
-  const { openModal, resolve, reject } = modalService();
+  const { openModal, reject } = modalService;
   const [modalOpen, setModalOpen] = useState(false);
+  const [createdStatus, setCreatedStatus] = useState('');
+  const [sendDelay, setSendDelay] = useState(null);
 
   const handleModal = () => {
     setModalOpen(true);
 
-    openModal()
+    openModal('bookAdd')
       .then(() => setModalOpen(false))
-      .catch(() => setModalOpen(false))
-      .finally(() => setModalOpen(false));
+      .catch(() => {
+        setCreatedStatus('');
+        setModalOpen(false);
+      });
+  };
+
+  const bookCreator = async (bookData) => {
+    if (sendDelay) {
+      console.log('таймер ещё не прошёл');
+      return;
+    }
+
+    const response = await fetch('http://localhost:3001/books', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bookData),
+    });
+
+    if (!response.ok) {
+      setCreatedStatus('Произошла какая-то ошибка!');
+    } else {
+      setCreatedStatus('Книга успешно добавлена!');
+      turnRateLimiting();
+    }
+  };
+
+  const turnRateLimiting = () => {
+    setSendDelay(true);
+
+    setTimeout(() => {
+      setSendDelay(null);
+      console.log('Таймер окончен!');
+    }, 15000);
   };
 
   return (
@@ -38,11 +74,21 @@ export function Header() {
         добавить книгу
       </button>
 
-      <Modal isOpen={modalOpen}>
-        <div>123 div</div>
-        <button onClick={resolve}>yeas</button>
-        <button onClick={reject}>no</button>
-      </Modal>
+      {modalOpen && (
+        <Modal
+          reject={reject}
+          id={'bookAdd'}>
+          {createdStatus ? (
+            <div>{createdStatus}</div>
+          ) : (
+            <FormAdd
+              onSubmit={(data) => {
+                bookCreator(data);
+              }}
+            />
+          )}
+        </Modal>
+      )}
     </header>
   );
 }

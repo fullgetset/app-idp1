@@ -1,6 +1,7 @@
 @use '../../styles/base/mixins' as mixins;
 
 .book-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: var(--palette-background-default);
@@ -90,5 +91,23 @@
 
   &__price-value {
     font-weight: 700;
+  }
+
+  &__remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    padding: 5px;
+
+    &:hover > svg {
+      color: var(--palette-background-secondary);
+    }
+
+    & > svg {
+      transition: color 0.3s;
+      width: 20px;
+      height: 20px;
+    }
   }
 }

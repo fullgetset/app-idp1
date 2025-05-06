@@ -4,7 +4,12 @@ import Image from 'next/image';
 
 import './book-card.style.scss';
 
-const BookCard = ({ description, img, price, title }) => {
+const BookCard = ({ id, description, img, price, title }) => {
+  const removeBook = async () => {
+    const response = await fetch(`http://localhost:3001/books?id=${id}`);
+    const books = await response.json();
+  };
+
   return (
     <div className='book-card'>
       <picture className='book-card__picture'>
@@ -31,6 +36,20 @@ const BookCard = ({ description, img, price, title }) => {
           <span className='book-card__price-value'>{price}</span>
         </div>
       </div>
+
+      <button className='book-card__remove'>
+        <svg
+          width='48'
+          height='48'
+          viewBox='0 0 16 16'
+          xmlns='http://www.w3.org/2000/svg'>
+          <path
+            fill='currentColor'
+            fillRule='evenodd'
+            clipRule='evenodd'
+            d='M4.11 2.697L2.698 4.11 6.586 8l-3.89 3.89 1.415 1.413L8 9.414l3.89 3.89 1.413-1.415L9.414 8l3.89-3.89-1.415-1.413L8 6.586l-3.89-3.89z'></path>
+        </svg>
+      </button>
     </div>
   );
 };

@@ -24,9 +24,13 @@
     line-height: 1;
     height: max-content;
     text-transform: uppercase;
-    border-radius: var(--border-radius-third);
+    border-radius: var(--border-radius-secondary);
     white-space: nowrap;
     transition: background-color 0.3s;
+
+    &:not(:hover) {
+      background-color: var(--palette-background-secondary);
+    }
 
     &:hover {
       background-color: var(--palette-background-dark);

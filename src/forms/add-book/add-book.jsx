@@ -1,0 +1,52 @@
+import './add-book.styles.scss';
+
+import { useForm } from 'react-hook-form';
+
+const FormAdd = ({ onSubmit }) => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className='add-book'>
+      <input
+        className='add-book__field'
+        placeholder='Заголовок'
+        {...register('title', {
+          required: true,
+          pattern: /^[a-zA-Zа-яА-Я0-9\s]+$/, 
+        })}
+      />
+
+      <input
+        className='add-book__field'
+        placeholder='Описание'
+        {...register('description', {
+          required: true,
+          pattern: /^[a-zA-Zа-яА-Я0-9\s]+$/,
+        })}
+      />
+
+      <input
+        className='add-book__field'
+        placeholder='Цена'
+        type='number'
+        {...register('price', { required: true, min: 10, maxLength: 5 })}
+      />
+
+      {errors.exampleRequired && <span>This field is required</span>}
+
+      <input
+        className='add-book__submit'
+        type='submit'
+      />
+    </form>
+  );
+};
+
+export { FormAdd };

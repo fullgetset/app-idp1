@@ -1,14 +1,15 @@
 :root {
   --palette-primary-text: #253858;
   --palette-secondary-text: #fff;
-  --palette-third-text:  #42526e;
+  --palette-third-text: #42526e;
   --palette-text-disabled: #a7b9c7;
 
   --palette-background-main: #f4f5f7;
   --palette-background-default: #fff;
   --palette-background-secondary: #3e86fa;
   --palette-background-third: #f7feff;
-  --palette-background-dark: #1D1E20;
+  --palette-background-dark: #1d1e20;
+  --palette-background-overlay: rgba(0, 0, 0, 0.5);
 
   --border-radius-primary: 5px;
   --border-radius-secondary: 10px;
@@ -19,7 +20,7 @@
   --shadows-3: 0 20px 46px -18px rgb(0 0 0 / 15%);
   --shadows-4: 0 1px 3px 0 rgb(0 0 0 / 11%);
 
-  --typography-fontFamily: "Open Sans", sans-serif;
+  --typography-fontFamily: 'Open Sans', sans-serif;
   --typography-htmlFontSize: 16px;
   --typography-fontSize-h1: 36px;
   --typography-fontSize-h2: 26px;
