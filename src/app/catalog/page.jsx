@@ -1,15 +1,25 @@
 'use client';
 
+import { BooksGrid, Pagination } from '@components';
 import { useState } from 'react';
 
+import './catalog.styles.scss';
+
 export default function Catalog(params) {
-  const [state, setState] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handlePage = (page) => setCurrentPage(page);
 
   return (
-    <div>
-      <button onClick={() => setState((prev) => (prev += 1))}>+1</button>
+    <div className='catalog'>
+      <h2 className='home-page__title'>Каталог страница {currentPage + 1}</h2>
 
-      <div>{state}</div>
+      <BooksGrid page={currentPage} />
+
+      <Pagination
+        handlePage={handlePage}
+        page={currentPage}
+      />
     </div>
   );
 }

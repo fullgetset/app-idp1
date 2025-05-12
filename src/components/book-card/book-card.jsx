@@ -45,6 +45,10 @@ const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
         </div>
       </div>
 
+      <button className='book-card__redact'>
+          
+      </button>
+
       <button
         className='book-card__remove'
         onClick={removeBook}>

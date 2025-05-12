@@ -7,6 +7,7 @@ import { modalService } from 'src/services';
 import { Modal } from '../modal';
 import { useState } from 'react';
 import { FormAdd } from '@forms';
+import Link from 'next/link';
 
 export function Header() {
   const { openModal, reject } = modalService;
@@ -59,13 +60,15 @@ export function Header() {
   return (
     <header className='header'>
       <picture className='header__logo-wrap'>
-        <Image
-          src={Logo}
-          alt='logo image'
-          width={65}
-          height={65}
-          className='header__logo'
-        />
+        <Link href={'/'}>
+          <Image
+            src={Logo}
+            alt='logo image'
+            width={65}
+            height={65}
+            className='header__logo'
+          />
+        </Link>
       </picture>
 
       <button

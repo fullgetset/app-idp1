@@ -1,27 +1,42 @@
-import Link from 'next/link';
-import './pagination.styles.scss';
+'use client';
 
-const Pagination = async () => {
-  const response = await fetch('http://localhost:3001/books/all');
-  const books = await response.json();
-  const quantityPages = Math.ceil(books.length / 8);
+import './pagination.styles.scss';
+import { useEffect, useState } from 'react';
+
+const Pagination = ({ handlePage, page }) => {
+  const [quantityPages, setQuantityPages] = useState(0);
+
+  useEffect(() => {
+    getQuantityPages();
+  }, []);
+
+  const getQuantityPages = async () => {
+    const response = await fetch('http://localhost:3001/books/all');
+    const books = await response.json();
+    const quantity = Math.ceil(books.length / 8);
+    setQuantityPages(quantity);
+  };
 
   return (
-    <nav className='pagination'>
-      <ul className='pagination__list'>
-        {Array.from({ length: quantityPages }).map((_, idx) => (
-          <li
-            key={idx}
-            className='pagination__item'>
-            <Link
-              href={`?page=${idx}`}
-              className='pagination__link'>
-              {idx + 1}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    quantityPages > 0 && (
+      <nav className='pagination'>
+        <ul className='pagination__list'>
+          {Array.from({ length: quantityPages }).map((_, idx) => (
+            <li
+              onClick={() => handlePage(idx)}
+              key={idx}
+              className='pagination__item'>
+              <span
+                className={`pagination__link ${
+                  idx === page ? 'pagination__link--active' : ''
+                }`}>
+                {idx + 1}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
   );
 };
 

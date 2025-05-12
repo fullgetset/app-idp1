@@ -6,6 +6,7 @@
   flex-direction: column;
   background-color: var(--palette-background-default);
   box-shadow: var(--shadows-2);
+  height: max-content;
 
   &__description-wrap:hover &__description-tooltip {
     opacity: 1;

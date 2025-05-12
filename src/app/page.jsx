@@ -8,7 +8,7 @@ export default async function Home() {
 
   return (
     <div className='home-page mt-4'>
-      <h2 className='home-page__title'>Самые популярные</h2>
+      <h2 className='title-h2'>Самые популярные</h2>
 
       <BooksGrid />
 

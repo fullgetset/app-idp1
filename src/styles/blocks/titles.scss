@@ -1,0 +1,11 @@
+@use '../../styles/base/mixins' as mixins;
+
+.title-h2 {
+  font-size: var(--typography-fontSize-h2);
+  font-weight: 700;
+  text-align: center;
+
+  @include mixins.media-breakpoint-down(lg) {
+    font-size: var(--typography-fontSize-h3);
+  }
+}

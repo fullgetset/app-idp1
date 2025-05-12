@@ -5,34 +5,6 @@
   flex-direction: column;
   gap: 30px;
 
-  &__title {
-    font-size: var(--typography-fontSize-h2);
-    font-weight: 700;
-    text-align: center;
-
-    @include mixins.media-breakpoint-down(lg) {
-      font-size: var(--typography-fontSize-h3);
-    }
-  }
-
-  &__books {
-    display: grid;
-
-    @include mixins.media-breakpoint-down(lg) {
-      gap: 20px;
-    }
-
-    @include mixins.media-breakpoint-between(md, lg) {
-      font-size: var(--typography-fontSize-body3);
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    @include mixins.media-breakpoint-up(lg) {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-    }
-  }
-
   &__more {
     width: max-content;
     margin-inline: auto;
