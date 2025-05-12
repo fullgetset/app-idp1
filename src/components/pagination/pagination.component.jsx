@@ -4,7 +4,7 @@ import './pagination.styles.scss';
 const Pagination = async () => {
   const response = await fetch('http://localhost:3001/books/all');
   const books = await response.json();
-  const quantityPages = Math.floor(books.length / 8);
+  const quantityPages = Math.ceil(books.length / 8);
 
   return (
     <nav className='pagination'>

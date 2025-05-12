@@ -1,0 +1,23 @@
+.button-primary {
+  font-size: var(--typography-fontSize-body2);
+  color: var(--palette-secondary-text);
+  background-color: var(--palette-background-secondary);
+  padding: 15px;
+  line-height: 1;
+  height: max-content;
+  text-transform: uppercase;
+  border-radius: var(--border-radius-secondary);
+  white-space: nowrap;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+
+  &:not(:hover) {
+    background-color: var(--palette-background-secondary);
+  }
+
+  &:hover {
+    background-color: var(--palette-background-dark);
+  }
+}

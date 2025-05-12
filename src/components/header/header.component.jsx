@@ -70,7 +70,7 @@ export function Header() {
 
       <button
         onClick={handleModal}
-        className='header__add'>
+        className='button-primary'>
         добавить книгу
       </button>
 

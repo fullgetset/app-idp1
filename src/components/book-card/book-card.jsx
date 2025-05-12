@@ -4,10 +4,18 @@ import Image from 'next/image';
 
 import './book-card.style.scss';
 
-const BookCard = ({ id, description, img, price, title }) => {
+const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
   const removeBook = async () => {
-    const response = await fetch(`http://localhost:3001/books?id=${id}`);
-    const books = await response.json();
+    const response = await fetch(`http://localhost:3001/books?id=${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      setUpdateBooks((prev) => !prev);
+    }
   };
 
   return (
@@ -37,7 +45,9 @@ const BookCard = ({ id, description, img, price, title }) => {
         </div>
       </div>
 
-      <button className='book-card__remove'>
+      <button
+        className='book-card__remove'
+        onClick={removeBook}>
         <svg
           width='48'
           height='48'

@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import './page.styles.scss';
-import { BookCard, Header, Pagination } from '@components';
+import { BookCard, BooksGrid, Header, Pagination } from '@components';
 
 export default async function Home() {
   const response = await fetch(`http://localhost:3001/books`);
@@ -7,20 +8,13 @@ export default async function Home() {
 
   return (
     <div className='home-page mt-4'>
-     
-      <h2 className='home-page__title'>Книги</h2>
+      <h2 className='home-page__title'>Самые популярные</h2>
 
-      <div className='home-page__books'>
-        {books?.length > 0 &&
-          books.map((book) => (
-            <BookCard
-              key={book.id}
-              {...book}
-            />
-          ))}
-      </div>
+      <BooksGrid />
 
-      <Pagination />
+      <button className='button-primary home-page__more'>
+        <Link href='/catalog'>Посмотреть всё</Link>
+      </button>
     </div>
   );
 }

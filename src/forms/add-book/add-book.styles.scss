@@ -29,20 +29,4 @@
       }
     }
   }
-
-  &__submit {
-    padding: 10px;
-    border: 0;
-    color: var(--palette-secondary-text);
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:not(:hover) {
-      background-color: var(--palette-background-secondary);
-    }
-
-    &:hover {
-      background-color: var(--palette-background-dark);
-    }
-  }
 }

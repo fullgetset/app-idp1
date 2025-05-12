@@ -1,13 +1,14 @@
 // libs
-@use "node_modules/modern-normalize/modern-normalize.css";
+@use 'node_modules/modern-normalize/modern-normalize.css';
 
 // Base
-@use "base/mixins";
-@use "base/fonts";
-@use "base/root";
-@use "base/reboot";
+@use 'base/mixins';
+@use 'base/fonts';
+@use 'base/root';
+@use 'base/reboot';
 
 // Blocks
-@use "blocks/container";
-@use "blocks/header";
-@use "blocks/footer";
+@use 'blocks/container';
+@use 'blocks/header';
+@use 'blocks/footer';
+@use 'blocks/buttons.scss';

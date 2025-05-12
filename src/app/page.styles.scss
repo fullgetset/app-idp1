@@ -32,4 +32,14 @@
       gap: 30px;
     }
   }
+
+  &__more {
+    width: max-content;
+    margin-inline: auto;
+
+    > a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
 }

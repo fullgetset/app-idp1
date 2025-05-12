@@ -42,7 +42,7 @@ const FormAdd = ({ onSubmit }) => {
       {errors.exampleRequired && <span>This field is required</span>}
 
       <input
-        className='add-book__submit'
+        className='button-primary '
         type='submit'
       />
     </form>
