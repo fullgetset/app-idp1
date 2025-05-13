@@ -8,6 +8,11 @@
   box-shadow: var(--shadows-2);
   height: max-content;
 
+  &:hover &__refactoring,
+  &:hover &__remove {
+    opacity: 1;
+  }
+
   &__description-wrap:hover &__description-tooltip {
     opacity: 1;
     pointer-events: auto;
@@ -94,21 +99,33 @@
     font-weight: 700;
   }
 
-  &__remove {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: transparent;
+  &__remove,
+  &__refactoring {
+    transition: opacity 0.3s;
+    opacity: 0;
     padding: 5px;
-
-    &:hover > svg {
-      color: var(--palette-background-secondary);
-    }
+    position: absolute;
+    background-color: transparent;
 
     & > svg {
       transition: color 0.3s;
       width: 20px;
       height: 20px;
+      color: var(--palette-primary-text);
     }
+
+    &:hover > svg {
+      color: var(--palette-background-secondary);
+    }
+  }
+
+  &__remove {
+    top: 5px;
+    right: 5px;
+  }
+
+  &__refactoring {
+    top: 50px;
+    right: 5px;
   }
 }

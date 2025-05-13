@@ -2,7 +2,7 @@ import './add-book.styles.scss';
 
 import { useForm } from 'react-hook-form';
 
-const FormAdd = ({ onSubmit }) => {
+const FormAdd = ({ onSubmit, withoutRequired }) => {
   const {
     register,
     handleSubmit,
@@ -18,17 +18,17 @@ const FormAdd = ({ onSubmit }) => {
         className='add-book__field'
         placeholder='Заголовок'
         {...register('title', {
-          required: true,
-          pattern: /^[a-zA-Zа-яА-Я0-9\s]+$/, 
+          required: !withoutRequired,
+          pattern: /^[a-zA-Zа-яА-Я0-9\s]+$/,
         })}
       />
 
-      <input
+      <textarea
         className='add-book__field'
         placeholder='Описание'
         {...register('description', {
-          required: true,
-          pattern: /^[a-zA-Zа-яА-Я0-9\s]+$/,
+          required: !withoutRequired,
+          pattern: /^[a-zA-Zа-яА-Я0-9\s.,!?-]+$/,
         })}
       />
 
@@ -36,7 +36,11 @@ const FormAdd = ({ onSubmit }) => {
         className='add-book__field'
         placeholder='Цена'
         type='number'
-        {...register('price', { required: true, min: 10, maxLength: 5 })}
+        {...register('price', {
+          required: !withoutRequired,
+          min: 10,
+          maxLength: 5,
+        })}
       />
 
       {errors.exampleRequired && <span>This field is required</span>}

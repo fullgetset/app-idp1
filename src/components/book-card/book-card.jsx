@@ -4,7 +4,17 @@ import Image from 'next/image';
 
 import './book-card.style.scss';
 
+import PencelIcon from 'public/images/pancel.svg';
+import { modalService } from 'src/services';
+import { useState } from 'react';
+import { Modal } from '../modal';
+import { EditingBook, FormAdd } from '@forms';
+
 const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
+  const { openModal, reject } = modalService;
+  const [isOpen, setIsOpen] = useState(false);
+  const [updStatus, setUpdStatus] = useState('');
+
   const removeBook = async () => {
     const response = await fetch(`http://localhost:3001/books?id=${id}`, {
       method: 'DELETE',
@@ -16,6 +26,41 @@ const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
     if (response.ok) {
       setUpdateBooks((prev) => !prev);
     }
+  };
+
+  const handleEditing = () => {
+    setIsOpen(true);
+
+    openModal('editingBook')
+      .then(() => setIsOpen(false))
+      .catch(() => {
+        setIsOpen(false);
+      });
+  };
+
+  const bookUpdate = async (bookData) => {
+    const { title, description, price } = bookData;
+
+    if (!title && !description && !price) {
+      return;
+    }
+
+    const response = await fetch(`http://localhost:3001/books/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bookData),
+    });
+
+    if (response.ok) {
+      setUpdStatus('Книга обновлена!');
+      setUpdateBooks((prev) => !prev);
+    } else {
+      setUpdStatus('Произошла какая-то ошибка!');
+    }
+
+    setUpdStatus('');
   };
 
   return (
@@ -45,9 +90,7 @@ const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
         </div>
       </div>
 
-      <button className='book-card__redact'>
-          
-      </button>
+      <button className='book-card__redact'></button>
 
       <button
         className='book-card__remove'
@@ -64,6 +107,27 @@ const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
             d='M4.11 2.697L2.698 4.11 6.586 8l-3.89 3.89 1.415 1.413L8 9.414l3.89 3.89 1.413-1.415L9.414 8l3.89-3.89-1.415-1.413L8 6.586l-3.89-3.89z'></path>
         </svg>
       </button>
+
+      <button
+        className='book-card__refactoring'
+        onClick={handleEditing}>
+        <PencelIcon />
+      </button>
+
+      {isOpen && (
+        <Modal
+          reject={reject}
+          id={'editingBook'}>
+          {updStatus ? (
+            <div>{updStatus}</div>
+          ) : (
+            <FormAdd
+              withoutRequired
+              onSubmit={bookUpdate}
+            />
+          )}
+        </Modal>
+      )}
     </div>
   );
 };
