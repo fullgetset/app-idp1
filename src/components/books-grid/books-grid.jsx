@@ -19,14 +19,31 @@ const BooksGrid = ({ page = 0 }) => {
     setBooks(books);
   };
 
+  const generateImage = (index) => {
+    switch (index) {
+      case 0: {
+        return '/images/hem.jpg';
+      }
+      case 1: {
+        return '/images/mincraft.jpg';
+      }
+      case 2: {
+        return '/images/shah.jpg';
+      }
+      default: {
+        return '/images/varvar.jpg';
+      }
+    }
+  };
+
   return (
     <div className='books-grid'>
       {books?.length > 0 &&
-        books.map((book) => (
+        books.map((book, idx) => (
           <BookCard
             setUpdateBooks={setUpdateBooks}
             key={book.id}
-            {...book}
+            {...{ ...book, img: { src: generateImage(idx), alt: ' ' } }}
           />
         ))}
     </div>

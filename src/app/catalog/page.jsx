@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import './catalog.styles.scss';
 
-export default function Catalog(params) {
+export default function Catalog() {
   const [currentPage, setCurrentPage] = useState(0);
 
   const handlePage = (page) => setCurrentPage(page);

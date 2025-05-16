@@ -6,14 +6,32 @@ import './book-card.style.scss';
 
 import PencelIcon from 'public/images/pancel.svg';
 import { modalService } from 'src/services';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Modal } from '../modal';
-import { EditingBook, FormAdd } from '@forms';
+import { FormAdd } from '@forms';
+import Link from 'next/link';
 
 const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
   const { openModal, reject } = modalService;
   const [isOpen, setIsOpen] = useState(false);
   const [updStatus, setUpdStatus] = useState('');
+  const [showTooltip, setShowTooltip] = useState(false);
+  const descriptionRef = useRef(null);
+
+  useEffect(() => {
+    checkHeightDescription();
+  }, []);
+
+  const checkHeightDescription = () => {
+    if (descriptionRef) {
+      const descriptionEl = descriptionRef.current;
+      const lineHeight = parseFloat(getComputedStyle(descriptionEl).lineHeight);
+      const maxHeight = lineHeight * 2;
+      const isShowTooltip = descriptionEl.scrollHeight > maxHeight;
+
+      setShowTooltip(isShowTooltip);
+    }
+  };
 
   const removeBook = async () => {
     const response = await fetch(`http://localhost:3001/books?id=${id}`, {
@@ -68,9 +86,13 @@ const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
       <picture className='book-card__picture'>
         <Image
           className='book-card__image'
-          src='https://rust.litnet.com/uploads/covers/220/1729889107_30.jpg'
-          alt=''
+          src={img.src}
+          alt={img.alt}
           fill
+        />
+        <Link
+          className='book-card__link'
+          href={`/book-details/${id}`}
         />
       </picture>
 
@@ -78,9 +100,15 @@ const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
         <div className='book-card__title'>{title}</div>
 
         <div className='book-card__description-wrap'>
-          <div className='book-card__description'>{description}</div>
+          <div
+            ref={descriptionRef}
+            className='book-card__description'>
+            {description}
+          </div>
 
-          <div className='book-card__description-tooltip'>{description}</div>
+          {showTooltip && (
+            <div className='book-card__description-tooltip'>{description}</div>
+          )}
         </div>
 
         <div className='book-card__price'>
@@ -89,8 +117,6 @@ const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
           <span className='book-card__price-value'>{price}</span>
         </div>
       </div>
-
-      <button className='book-card__redact'></button>
 
       <button
         className='book-card__remove'
