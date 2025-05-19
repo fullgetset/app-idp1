@@ -89,6 +89,7 @@ const BookCard = ({ id, description, img, price, title, setUpdateBooks }) => {
           src={img.src}
           alt={img.alt}
           fill
+          quality={50}
         />
         <Link
           className='book-card__link'
