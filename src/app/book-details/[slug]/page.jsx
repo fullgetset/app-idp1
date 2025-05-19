@@ -25,7 +25,7 @@ export default async function Page({ params }) {
               src='/images/hem.jpg'
               alt=' '
               fill
-              sizes='(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 30vw'
+              sizes='(max-width: 768px) 90vw, 40vw'
             />
           </picture>
 
